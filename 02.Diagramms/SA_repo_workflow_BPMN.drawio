@@ -16,16 +16,16 @@
         <mxCell id="start" value="New SA repo needed" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=standard;symbol=general;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane1" vertex="1">
           <mxGeometry x="49.71645492376014" y="36.93228346456693" width="25.568458161542885" height="25.568458161542885" as="geometry" />
         </mxCell>
-        <mxCell id="t1" value="Create private repo from template" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane1" vertex="1">
+        <mxCell id="t1" value="Create private repo from template" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=user;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane1" vertex="1">
           <mxGeometry x="106.53526055091459" y="24.85826771653543" width="92.33055914412597" height="49.71653543307086" as="geometry" />
         </mxCell>
         <mxCell id="ds1" value="Template repository&lt;br&gt;avq_sa_template" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#F5FAFE;strokeColor=#6FA3D8;dashed=1;dashPattern=4 3;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane1" vertex="1">
           <mxGeometry x="110.08643590261173" y="95.88188976377953" width="85.22820844073166" height="32.67086614173229" as="geometry" />
         </mxCell>
-        <mxCell id="t3" value="Create Claude Project and point it at the repo" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane1" vertex="1">
+        <mxCell id="t3" value="Create Claude Project and point it at the repo" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=user;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane1" vertex="1">
           <mxGeometry x="376.4245872798982" y="24.85826771653543" width="92.33055914412597" height="49.71653543307086" as="geometry" />
         </mxCell>
-        <mxCell id="t6" value="Review the draft" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane1" vertex="1">
+        <mxCell id="t6" value="Review the draft" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=user;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane1" vertex="1">
           <mxGeometry x="781.2585773733737" y="24.85826771653543" width="92.33055914412597" height="49.71653543307086" as="geometry" />
         </mxCell>
         <mxCell id="gw" value="Approved?" style="shape=mxgraph.bpmn.gateway2;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=rhombusPerimeter;outlineConnect=0;outline=none;symbol=none;gwType=exclusive;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane1" vertex="1">
@@ -37,19 +37,19 @@
         <mxCell id="lane2" value="GitHub organization admin" style="swimlane;html=1;horizontal=0;startSize=30;whiteSpace=wrap;collapsible=0;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;fillColor=#F5FAFE;strokeColor=#6FA3D8;swimlaneFillColor=#FFFFFF;" parent="pool" vertex="1">
           <mxGeometry x="36.07993540573275" y="134.93920000000006" width="1094.4247073072265" height="99.43648000000002" as="geometry" />
         </mxCell>
-        <mxCell id="t2" value="Grant Claude GitHub App access" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane2" vertex="1">
+        <mxCell id="t2" value="Grant Claude GitHub App access" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=user;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane2" vertex="1">
           <mxGeometry x="241.47992391540637" y="24.85826771653543" width="92.33055914412597" height="49.71653543307086" as="geometry" />
         </mxCell>
         <mxCell id="lane3" value="AI agent" style="swimlane;html=1;horizontal=0;startSize=30;whiteSpace=wrap;collapsible=0;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;fillColor=#F5FAFE;strokeColor=#6FA3D8;swimlaneFillColor=#FFFFFF;" parent="pool" vertex="1">
           <mxGeometry x="36.07993540573275" y="234.37568000000002" width="1094.4247073072265" height="134.93920000000006" as="geometry" />
         </mxCell>
-        <mxCell id="t4" value="Read context and draft document" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane3" vertex="1">
+        <mxCell id="t4" value="Read context and draft document" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=service;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane3" vertex="1">
           <mxGeometry x="511.36925064439" y="24.85826771653543" width="92.33055914412597" height="49.71653543307086" as="geometry" />
         </mxCell>
         <mxCell id="ds2" value="Shared skill plugin&lt;br&gt;(later)" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#F5FAFE;strokeColor=#6FA3D8;dashed=1;dashPattern=4 3;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane3" vertex="1">
           <mxGeometry x="504.26689994099564" y="99.43307086614172" width="106.53526055091459" height="32.67086614173229" as="geometry" />
         </mxCell>
-        <mxCell id="t5" value="Commit to GitHub as AI contributor" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane3" vertex="1">
+        <mxCell id="t5" value="Commit to GitHub as AI contributor" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task2;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=script;fillColor=#E6F1FB;strokeColor=#6FA3D8;fontStyle=1;fontSize=8;fontFamily=Segoe UI;fontColor=#0C447C;" parent="lane3" vertex="1">
           <mxGeometry x="646.3139140088817" y="24.85826771653543" width="92.33055914412597" height="49.71653543307086" as="geometry" />
         </mxCell>
         <mxCell id="f9" value="No: feedback" style="rounded=1;html=1;endArrow=block;endFill=1;endSize=6;strokeColor=#44546A;strokeWidth=1;fontSize=8;fontFamily=Segoe UI;fontColor=#44546A;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;jumpStyle=arc;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="pool" source="gw" target="t4" edge="1">
