@@ -3,6 +3,7 @@
 <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center;">
 <button id="tcode">Code</button>
 <button id="tprev">Preview</button>
+<button id="big">Enlarge</button>
 <span style="flex: 1;"></span>
 <button id="send">Send to chat ↗</button>
 </div>
@@ -17,6 +18,8 @@ const out = document.getElementById('out');
 const err = document.getElementById('err');
 const tcode = document.getElementById('tcode');
 const tprev = document.getElementById('tprev');
+const bigBtn = document.getElementById('big');
+let big = false;
 let n = 0;
 const css = '.node rect{rx:14px;ry:14px;stroke-width:1px;}'
   + '.nodeLabel{font-weight:500;}'
@@ -44,6 +47,15 @@ if (typeof mermaid === 'undefined') {
     flowchart: { curve: 'step', htmlLabels: true, nodeSpacing: 40, rankSpacing: 55, padding: 14, useMaxWidth: true }
   });
 }
+function fit() {
+  const svg = out.querySelector('svg');
+  if (!svg || !big) return;
+  const vb = svg.viewBox && svg.viewBox.baseVal;
+  const w = vb && vb.width ? vb.width : svg.getBoundingClientRect().width;
+  svg.style.maxWidth = 'none';
+  svg.style.width = Math.round(Math.max(w, out.clientWidth)) + 'px';
+  svg.style.height = 'auto';
+}
 async function draw() {
   err.textContent = '';
   if (typeof mermaid === 'undefined') return;
@@ -51,6 +63,7 @@ async function draw() {
   try {
     const res = await mermaid.render(id, src.value);
     out.innerHTML = res.svg;
+    fit();
   } catch (e) {
     err.textContent = 'Syntax error: ' + (e && e.message ? e.message : e);
     const bad = document.getElementById('d' + id);
@@ -66,6 +79,14 @@ function setMode(m) {
 }
 tcode.addEventListener('click', function () { setMode('code'); });
 tprev.addEventListener('click', function () { setMode('preview'); });
+bigBtn.addEventListener('click', function () {
+  big = !big;
+  bigBtn.textContent = big ? 'Shrink' : 'Enlarge';
+  bigBtn.style.background = big ? 'var(--surface-1)' : 'transparent';
+  src.style.height = big ? '640px' : '300px';
+  out.style.minHeight = big ? '560px' : '120px';
+  if (out.style.display !== 'none') draw();
+});
 document.getElementById('send').addEventListener('click', function () {
   sendPrompt('Here is my edited Mermaid code, please use it as the current version:\n\n' + src.value);
 });

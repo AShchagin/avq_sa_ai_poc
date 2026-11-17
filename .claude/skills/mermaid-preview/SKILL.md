@@ -29,6 +29,7 @@ Do not change the template's structure unless the user asks. The Code and Previe
 
 - **Preview** renders the diagram with Mermaid 10.9.1, loaded from cdnjs, in the team's flow style (see "Diagram style"). Syntax errors appear as a red line under the diagram instead of a broken picture.
 - **Code** shows the editable text. Edits take effect when the user switches back to Preview.
+- **Enlarge** switches to a taller layout: the code box grows, and the diagram is drawn at its natural size with horizontal scrolling when it is wider than the widget. The button then reads Shrink. This is not true full screen. A chat widget cannot go full screen and keeps a fixed width, so for a very large diagram suggest opening the code in mermaid.live.
 - **Send to chat** posts the edited code back as a message. Treat that code as the current version of the diagram from then on. Never fall back to an earlier version you wrote yourself.
 
 Edits made inside the widget exist only in the widget. They are lost if the chat redraws it, and they are never written to a file or repo on their own. If the user wants the diagram saved, they have to send it to the chat first, and then you commit it only when asked.
