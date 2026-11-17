@@ -18,6 +18,8 @@ const out = document.getElementById('out');
 const err = document.getElementById('err');
 const tcode = document.getElementById('tcode');
 const tprev = document.getElementById('tprev');
+const ID = '__DIAGRAM_ID__';
+const original = src.value;
 let n = 0;
 const css = '.node rect{rx:14px;ry:14px;stroke-width:1px;}'
   + '.nodeLabel{font-weight:500;}'
@@ -68,7 +70,11 @@ function setMode(m) {
 tcode.addEventListener('click', function () { setMode('code'); });
 tprev.addEventListener('click', function () { setMode('preview'); });
 document.getElementById('full').addEventListener('click', function () {
-  sendPrompt('Open this Mermaid diagram in the full-size editor page, using this code as the current version:\n\n' + src.value);
+  if (src.value === original) {
+    sendPrompt('Open the full-size editor page for the diagram "' + ID + '".');
+  } else {
+    sendPrompt('Open the full-size editor page for the diagram "' + ID + '", using my edited code:\n\n' + src.value);
+  }
 });
 document.getElementById('send').addEventListener('click', function () {
   sendPrompt('Here is my edited Mermaid code, please use it as the current version:\n\n' + src.value);

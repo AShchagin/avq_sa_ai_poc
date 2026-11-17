@@ -19,8 +19,8 @@ Skip the widget when the user only wants Mermaid text to paste into a file and h
 
 1. Write the Mermaid code first. Keep it valid for Mermaid 10 (see "Writing diagrams that render reliably").
 2. Load the visualizer guidance with `mcp__visualize__read_me` (module `interactive`) before the first widget call. Do this silently, without mentioning it to the user.
-3. Read `assets/widget-template.html` from this skill folder. Replace the placeholder `__MERMAID_CODE__` with the diagram code. The code goes inside a `<textarea>`, so replace `&` with `&amp;` and `<` with `&lt;` in the code. Nothing else needs escaping.
-4. Pass the result to `mcp__visualize__show_widget` as `widget_code`. Use a specific snake_case `title`, such as `solution_design_flow`.
+3. Read `assets/widget-template.html` from this skill folder. Replace the placeholder `__MERMAID_CODE__` with the diagram code. The code goes inside a `<textarea>`, so replace `&` with `&amp;` and `<` with `&lt;` in the code. Nothing else needs escaping. Also replace the placeholder `__DIAGRAM_ID__` with the snake_case title from the next step. The Full view button quotes that id in its message, which is how you find the right diagram again.
+4. Pass the result to `mcp__visualize__show_widget` as `widget_code`. Use a specific snake_case `title`, such as `solution_design_flow`, and use the same text as the `__DIAGRAM_ID__` above. Give each diagram its own id, since several can be in one conversation.
 5. Write one short sentence before the widget, and put explanations, assumptions and open questions in normal chat text after it. Keep prose out of the widget itself.
 
 Do not change the template's structure unless the user asks. The Code and Preview buttons, the error line and the "Send to chat" button are the whole point. Do not add comments inside the widget code, because they break streaming.
@@ -29,16 +29,16 @@ Do not change the template's structure unless the user asks. The Code and Previe
 
 - **Preview** renders the diagram with Mermaid 10.9.1, loaded from cdnjs, in the team's flow style (see "Diagram style"). Syntax errors appear as a red line under the diagram instead of a broken picture.
 - **Code** shows the editable text. Edits take effect when the user switches back to Preview.
-- **Full view** sends a message asking you to open the diagram in the full-size editor page (see the next section). The widget cannot grow beyond the chat's width, so a wide diagram would otherwise be cut off.
+- **Full view** asks you to open the diagram in the full-size editor page (see the next section). The widget cannot grow beyond the chat's width, so a wide diagram would otherwise be cut off. If the user has not edited the code, the button sends only a short message with the diagram id, to keep the chat uncluttered. If the code was edited, it also includes the edited code, because that is the only way the edits can reach you. A widget can talk to the chat only through visible messages, so it cannot pass the code along silently.
 - **Send to chat** posts the edited code back as a message. Treat that code as the current version of the diagram from then on. Never fall back to an earlier version you wrote yourself.
 
 Edits made inside the widget exist only in the widget. They are lost if the chat redraws it, and they are never written to a file or repo on their own. If the user wants the diagram saved, they have to send it to the chat first, and then you commit it only when asked.
 
 ## Full-size editor page
 
-When the user clicks Full view (the message starts "Open this Mermaid diagram in the full-size editor page"), or asks to see a diagram larger, bigger or full screen, publish the diagram as a page of its own. A chat widget has a fixed width and cannot go full screen, so a wide diagram is cut off there, while a published page uses the whole browser window.
+When the user clicks Full view (the message starts "Open the full-size editor page for the diagram"), or asks to see a diagram larger, bigger or full screen, publish the diagram as a page of its own. A chat widget has a fixed width and cannot go full screen, so a wide diagram is cut off there, while a published page uses the whole browser window.
 
-1. Take the code from the user's message if it has any, otherwise use the current version.
+1. Find the code. If the message includes code (the user edited it), use that. Otherwise the message gives only a diagram id in quotes: take the code from the newest version of the diagram with that id, which is either the last widget you wrote with that title or code the user later sent with Send to chat, whichever is newer. If you cannot find the id, ask the user to send the code. Do not paste the code into your reply when you publish.
 2. Read `assets/fullview-template.html`. Replace `__MERMAID_CODE__` with the code, escaped the same way as for the widget (`&` and `<`). Replace both occurrences of `__DIAGRAM_TITLE__` with a short, specific name for the diagram, two to four words, such as "SA AI Pipeline". Write the file to your scratchpad directory as `.html`.
 3. Load the `artifact-design` skill, which the Artifact tool requires before a page is written, and then publish the file with the Artifact tool. Use the icon `flowchart` and a one-sentence description. To change the same diagram later, publish the same file path again so the link stays the same.
 4. Tell the user in one sentence what the page is. The app shows a card with the link, so do not paste the URL.
