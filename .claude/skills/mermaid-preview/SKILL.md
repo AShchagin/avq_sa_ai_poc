@@ -27,18 +27,35 @@ Do not change the template's structure unless the user asks. The Code and Previe
 
 ## What the widget does
 
-- **Preview** renders the diagram with Mermaid 10.9.1, loaded from cdnjs. Syntax errors appear as a red line under the diagram instead of a broken picture.
+- **Preview** renders the diagram with Mermaid 10.9.1, loaded from cdnjs, in the team's flow style (see "Diagram style"). Syntax errors appear as a red line under the diagram instead of a broken picture.
 - **Code** shows the editable text. Edits take effect when the user switches back to Preview.
 - **Send to chat** posts the edited code back as a message. Treat that code as the current version of the diagram from then on. Never fall back to an earlier version you wrote yourself.
 
 Edits made inside the widget exist only in the widget. They are lost if the chat redraws it, and they are never written to a file or repo on their own. If the user wants the diagram saved, they have to send it to the chat first, and then you commit it only when asked.
 
+## Diagram style
+
+The template styles every diagram as a clean, flat flow: soft blue rounded boxes with dark blue text, thin grey right-angle connectors, and white pill-shaped edge labels. The team chose this look because it reads well in documents and presentations, so write diagrams to suit it:
+
+- Use `flowchart LR` by default. Use `TD` only when the flow is clearly vertical, such as a long approval chain.
+- Draw steps as rounded boxes with quoted labels: `A1("Create repo")`. Break long labels with `<br/>` so boxes stay compact, for example `A1("Create GitHub repo<br/>and grant access")`. Remember the escaping in the textarea step above, so `<br/>` becomes `&lt;br/>`.
+- Mark decisions, reviews and classification steps as dashed, paler boxes. Add these two lines at the bottom of the diagram, then list the node ids in the `class` line:
+
+  ```
+  classDef review fill:#F5FAFE,stroke:#B5D4F4,stroke-dasharray:4 3
+  class A3 review
+  ```
+
+- Keep edge labels to one or two words, such as `Yes`, `No` or `Feedback`: `A3 -->|Feedback| B1`.
+- Do not use `subgraph` swimlanes unless the user asks for lanes. Lane frames clash with the flat style, and the lane's owner can usually go into the box label instead.
+
+The pill labels and rounded corners come from the widget's own styling. The same code pasted into GitHub or mermaid.live shows the colors from `classDef` but square corners and plain labels. The connectors have square bends because Mermaid 10.9.1 has no rounded option.
+
 ## Writing diagrams that render reliably
 
-- Put node labels in double quotes: `A1["Create repo"]`. Labels with spaces, slashes or brackets break without them.
+- Put node labels in double quotes. Labels with spaces, slashes or brackets break without them.
 - Never use the lowercase word `end` as a node id or label. It closes a subgraph.
-- Use `flowchart TD` or `flowchart LR` for new diagrams. Use `subgraph` for swimlanes, with a quoted title: `subgraph SA["Solution Architect"]`.
-- Keep labels short. Long labels make wide diagrams that are hard to read in a chat-width widget.
+- Keep labels short. Long labels make wide diagrams that are hard to read in a chat-width widget. Five or six boxes in a row is about the limit.
 - Prefer one idea per diagram. Offer a second diagram over a crowded first one.
 
 ## If the widget cannot be used
