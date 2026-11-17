@@ -1,0 +1,53 @@
+<h2 class="sr-only">Editable Mermaid diagram with Code and Preview buttons</h2>
+<div style="padding: 0.5rem 0;">
+<div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center;">
+<button id="tcode">Code</button>
+<button id="tprev">Preview</button>
+<span style="flex: 1;"></span>
+<button id="send">Send to chat ↗</button>
+</div>
+<textarea id="src" spellcheck="false" style="width: 100%; height: 300px; font-family: var(--font-mono); font-size: 13px; line-height: 1.5; box-sizing: border-box; display: block;">__MERMAID_CODE__</textarea>
+<div id="out" style="min-height: 120px; overflow: auto; padding: 8px 0;"></div>
+<p id="err" style="font-size: 13px; color: var(--text-danger); margin: 8px 0 0;"></p>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<script>
+const src = document.getElementById('src');
+const out = document.getElementById('out');
+const err = document.getElementById('err');
+const tcode = document.getElementById('tcode');
+const tprev = document.getElementById('tprev');
+let n = 0;
+if (typeof mermaid === 'undefined') {
+  err.textContent = 'The Mermaid library did not load in this widget.';
+} else {
+  const dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'default', securityLevel: 'strict' });
+}
+async function draw() {
+  err.textContent = '';
+  if (typeof mermaid === 'undefined') return;
+  const id = 'mm' + (n++);
+  try {
+    const res = await mermaid.render(id, src.value);
+    out.innerHTML = res.svg;
+  } catch (e) {
+    err.textContent = 'Syntax error: ' + (e && e.message ? e.message : e);
+    const bad = document.getElementById('d' + id);
+    if (bad) bad.remove();
+  }
+}
+function setMode(m) {
+  src.style.display = m === 'code' ? 'block' : 'none';
+  out.style.display = m === 'preview' ? 'block' : 'none';
+  tcode.style.background = m === 'code' ? 'var(--surface-1)' : 'transparent';
+  tprev.style.background = m === 'preview' ? 'var(--surface-1)' : 'transparent';
+  if (m === 'preview') draw(); else err.textContent = '';
+}
+tcode.addEventListener('click', function () { setMode('code'); });
+tprev.addEventListener('click', function () { setMode('preview'); });
+document.getElementById('send').addEventListener('click', function () {
+  sendPrompt('Here is my edited Mermaid code, please use it as the current version:\n\n' + src.value);
+});
+setMode('preview');
+</script>
