@@ -1,0 +1,65 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.15 Chrome/134.0.6998.205 Electron/35.2.1 Safari/537.36" version="26.2.15">
+  <diagram name="SA repo workflow" id="sa-repo-workflow">
+    <mxGraphModel dx="2455" dy="1001" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t1" value="Template repository&lt;br&gt;avq_sa_template" style="rounded=1;whiteSpace=wrap;html=1;arcSize=22;fillColor=#E6F1FB;strokeColor=#B5D4F4;fontColor=#0C447C;fontStyle=1;fontSize=10;fontFamily=Segoe UI;" parent="1" vertex="1">
+          <mxGeometry x="23" y="354" width="102.85700534759359" height="34.285714285714285" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" value="New private repo&lt;br&gt;created by a team member" style="rounded=1;whiteSpace=wrap;html=1;arcSize=22;fillColor=#E6F1FB;strokeColor=#B5D4F4;fontColor=#0C447C;fontStyle=1;fontSize=10;fontFamily=Segoe UI;" parent="1" vertex="1">
+          <mxGeometry x="222.714064171123" y="354" width="114.2855614973262" height="34.285714285714285" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="Admin grants&lt;br&gt;Claude GitHub App access" style="rounded=1;whiteSpace=wrap;html=1;arcSize=22;fillColor=#F5FAFE;strokeColor=#B5D4F4;dashed=1;dashPattern=4 3;fontColor=#0C447C;fontStyle=1;fontSize=10;fontFamily=Segoe UI;" parent="1" vertex="1">
+          <mxGeometry x="369.99957219251337" y="354" width="114.2855614973262" height="34.285714285714285" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="Create Claude Project&lt;br&gt;and point it at the repo" style="rounded=1;whiteSpace=wrap;html=1;arcSize=22;fillColor=#E6F1FB;strokeColor=#B5D4F4;fontColor=#0C447C;fontStyle=1;fontSize=10;fontFamily=Segoe UI;" parent="1" vertex="1">
+          <mxGeometry x="524.2850802139037" y="354" width="114.2855614973262" height="34.285714285714285" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="Shared skill plugin&lt;br&gt;(later)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=22;fillColor=#F5FAFE;strokeColor=#B5D4F4;dashed=1;dashPattern=4 3;fontColor=#0C447C;fontStyle=1;fontSize=10;fontFamily=Segoe UI;" parent="1" vertex="1">
+          <mxGeometry x="429.9950802139037" y="460.00428571428574" width="114.2855614973262" height="34.285714285714285" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" value="AI agent reads context&lt;br&gt;and drafts document" style="rounded=1;whiteSpace=wrap;html=1;arcSize=22;fillColor=#E6F1FB;strokeColor=#B5D4F4;fontColor=#0C447C;fontStyle=1;fontSize=10;fontFamily=Segoe UI;" parent="1" vertex="1">
+          <mxGeometry x="689.9991443850267" y="394" width="114.2855614973262" height="34.285714285714285" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="Commit to GitHub&lt;br&gt;as AI contributor" style="rounded=1;whiteSpace=wrap;html=1;arcSize=22;fillColor=#E6F1FB;strokeColor=#B5D4F4;fontColor=#0C447C;fontStyle=1;fontSize=10;fontFamily=Segoe UI;" parent="1" vertex="1">
+          <mxGeometry x="855.7132085561498" y="354" width="102.85700534759359" height="34.285714285714285" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="Solution Architect&lt;br&gt;reviews" style="rounded=1;whiteSpace=wrap;html=1;arcSize=22;fillColor=#F5FAFE;strokeColor=#B5D4F4;dashed=1;dashPattern=4 3;fontColor=#0C447C;fontStyle=1;fontSize=10;fontFamily=Segoe UI;" parent="1" vertex="1">
+          <mxGeometry x="1009.9987165775401" y="354" width="108.5712834224599" height="34.285714285714285" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="Use template" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;endSize=6;strokeColor=#8B95A1;strokeWidth=1;fontSize=10;fontFamily=Segoe UI;fontColor=#44546A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CFD6DD;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="t1" target="r1" edge="1">
+          <mxGeometry x="-0.0885" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;endSize=6;strokeColor=#8B95A1;strokeWidth=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=10;" parent="1" source="r1" target="a1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;endSize=6;strokeColor=#8B95A1;strokeWidth=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=10;" parent="1" source="a1" target="p1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;endSize=6;strokeColor=#8B95A1;strokeWidth=1;exitX=1;exitY=0.5;entryX=0;entryY=0.25;fontSize=10;" parent="1" source="p1" target="b1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="Skill updates" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;endSize=6;strokeColor=#8B95A1;strokeWidth=1;fontSize=10;fontFamily=Segoe UI;fontColor=#44546A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CFD6DD;exitX=1;exitY=0.5;entryX=0;entryY=0.75;" parent="1" source="s1" target="b1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;endSize=6;strokeColor=#8B95A1;strokeWidth=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=10;" parent="1" source="b1" target="b2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;endSize=6;strokeColor=#8B95A1;strokeWidth=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=10;" parent="1" source="b2" target="a3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="Feedback" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;endSize=6;strokeColor=#8B95A1;strokeWidth=1;fontSize=10;fontFamily=Segoe UI;fontColor=#44546A;labelBackgroundColor=#FFFFFF;labelBorderColor=#CFD6DD;exitX=0.5;exitY=1;entryX=0.5;entryY=1;" parent="1" source="a3" target="b1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1064.28435828877" y="474" />
+              <mxPoint x="747.1419251336898" y="474" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
