@@ -1,6 +1,6 @@
 ---
 name: mermaid-preview
-description: Show a Mermaid diagram in the chat as an editable widget with Code and Preview buttons, so the user can tweak the diagram text and see it re-rendered on the spot. Use this whenever the user asks for a Mermaid diagram, flowchart, sequence diagram, architecture or process sketch, or wants to edit, adjust or iterate on a diagram interactively, even if they do not say "widget", "preview" or "editor". Also use it when the user pastes Mermaid code and asks what it looks like.
+description: Show a Mermaid diagram in the chat as an editable widget with Code and Preview buttons, so the user can tweak the diagram text and see it re-rendered on the spot. Use this whenever the user asks for a Mermaid diagram, flowchart, sequence diagram, architecture or process sketch, or wants to edit, adjust or iterate on a diagram interactively, even if they do not say "widget", "preview" or "editor". Also use it when the user pastes Mermaid code and asks what it looks like, or wants to see a diagram larger, full size or in full view.
 ---
 
 # Mermaid preview and edit widget
@@ -29,10 +29,23 @@ Do not change the template's structure unless the user asks. The Code and Previe
 
 - **Preview** renders the diagram with Mermaid 10.9.1, loaded from cdnjs, in the team's flow style (see "Diagram style"). Syntax errors appear as a red line under the diagram instead of a broken picture.
 - **Code** shows the editable text. Edits take effect when the user switches back to Preview.
-- **Enlarge** switches to a taller layout: the code box grows, and the diagram is drawn at its natural size with horizontal scrolling when it is wider than the widget. The button then reads Shrink. This is not true full screen. A chat widget cannot go full screen and keeps a fixed width, so for a very large diagram suggest opening the code in mermaid.live.
+- **Full view** sends a message asking you to open the diagram in the full-size editor page (see the next section). The widget cannot grow beyond the chat's width, so a wide diagram would otherwise be cut off.
 - **Send to chat** posts the edited code back as a message. Treat that code as the current version of the diagram from then on. Never fall back to an earlier version you wrote yourself.
 
 Edits made inside the widget exist only in the widget. They are lost if the chat redraws it, and they are never written to a file or repo on their own. If the user wants the diagram saved, they have to send it to the chat first, and then you commit it only when asked.
+
+## Full-size editor page
+
+When the user clicks Full view (the message starts "Open this Mermaid diagram in the full-size editor page"), or asks to see a diagram larger, bigger or full screen, publish the diagram as a page of its own. A chat widget has a fixed width and cannot go full screen, so a wide diagram is cut off there, while a published page uses the whole browser window.
+
+1. Take the code from the user's message if it has any, otherwise use the current version.
+2. Read `assets/fullview-template.html`. Replace `__MERMAID_CODE__` with the code, escaped the same way as for the widget (`&` and `<`). Replace both occurrences of `__DIAGRAM_TITLE__` with a short, specific name for the diagram, two to four words, such as "SA AI Pipeline". Write the file to your scratchpad directory as `.html`.
+3. Load the `artifact-design` skill, which the Artifact tool requires before a page is written, and then publish the file with the Artifact tool. Use the icon `flowchart` and a one-sentence description. To change the same diagram later, publish the same file path again so the link stays the same.
+4. Tell the user in one sentence what the page is. The app shows a card with the link, so do not paste the URL.
+
+The page has code and live preview side by side, zoom and fit controls, Copy code and Reset. Edits stay in the viewer's browser only. There is no Send to chat button, and downloads are blocked in published pages, so tell the user to paste edited code back into the chat, or ask you to save it, when it should reach you or the repo.
+
+A published page is private by default but it is still hosted. If the diagram contains customer names or anything the user called confidential, ask before publishing. As an alternative, offer to save the filled-in template as an `.html` file in the repo, which opens locally in a browser and still loads Mermaid from cdnjs.
 
 ## Diagram style
 
@@ -50,7 +63,7 @@ The template styles every diagram as a clean, flat flow: soft blue rounded boxes
 - Keep edge labels to one or two words, such as `Yes`, `No` or `Feedback`: `A3 -->|Feedback| B1`.
 - Do not use `subgraph` swimlanes unless the user asks for lanes. Lane frames clash with the flat style, and the lane's owner can usually go into the box label instead.
 
-The pill labels and rounded corners come from the widget's own styling. The same code pasted into GitHub or mermaid.live shows the colors from `classDef` but square corners and plain labels. The connectors have square bends because Mermaid 10.9.1 has no rounded option.
+The pill labels and rounded corners come from the templates' own styling. The same code pasted into GitHub or mermaid.live shows the colors from `classDef` but square corners and plain labels. The connectors have square bends because Mermaid 10.9.1 has no rounded option.
 
 ## Writing diagrams that render reliably
 
